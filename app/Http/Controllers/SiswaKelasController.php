@@ -2,23 +2,25 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\KelasDetailModel;
+use App\Models\KelasModel;
+use App\Models\SiswaModel;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Foundation\Validation\ValidatesRequests;
+
 
 // panggil model siswa
-use App\Models\SiswaModel;
+use App\Models\SiswaKelasModel;
 
 // panggil model Siswa Kelas
-use App\Models\SiswaKelasModel;
+use App\Models\KelasDetailModel;
 
 // panggil model Tahun AJaran
 use App\Models\TahunAjaranModel;
 
 // panggil model Kelas
-use App\Models\KelasModel;
+use Illuminate\Support\Facades\DB;
 
-use Session;
+use Illuminate\Support\Facades\Session;
 
 class SiswaKelasController extends Controller
 {
@@ -28,17 +30,17 @@ class SiswaKelasController extends Controller
     {
         //ambil idtahun ajaran aktif
         $idthnajaran = Session::get('idthnajaran');
-        
+
         //ambil data detail kelas berdasarkan tahun ajaran aktif
         $kelasdetail    = KelasDetailModel::where('tbl_kelasdetail.idthnajaran',$idthnajaran)
         ->get();
 
         // mengirim data siswa kelas ke view siswa kelas
-        return view('admin.pages.siswa.v_siswakelas', 
+        return view('admin.pages.siswa.v_siswakelas',
             [
-                // 'siswakelas' => $siswakelas, 
-                // 'siswa' => $siswa, 
-                // 'thnajaran' => $thnajaran, 
+                // 'siswakelas' => $siswakelas,
+                // 'siswa' => $siswa,
+                // 'thnajaran' => $thnajaran,
                 'kelasdetail' => $kelasdetail,
             ]);
     }
@@ -75,11 +77,11 @@ class SiswaKelasController extends Controller
 
 
         // mengirim data siswa kelas ke view siswa kelas
-        return view('admin.pages.siswa.v_siswakelascari', 
+        return view('admin.pages.siswa.v_siswakelascari',
             [
-                'siswakelas' => $siswakelas, 
-                // 'siswa' => $siswa, 
-                // 'thnajaran' => $thnajaran, 
+                'siswakelas' => $siswakelas,
+                // 'siswa' => $siswa,
+                // 'thnajaran' => $thnajaran,
                 'kelasdetail' => $kelasdetail,
                 'katakunci'=>$katakunci
             ]);
@@ -93,13 +95,14 @@ class SiswaKelasController extends Controller
     public function siswakelastambah(Request $request)
     {
         //dd($request->all());
-        $this->validate($request, [
+        $request->validate([
             'idsiswakelas' => 'required',
             'idsiswa' => 'required',
             'nis' => 'required',
             'idthnajaran' => 'required',
             'idkelas' => 'required'
         ]);
+
 
         SiswaKelasModel::create([
             'idsiswakelas' => $request->idsiswakelas,
@@ -110,7 +113,7 @@ class SiswaKelasController extends Controller
         ]);
 
         //dd($x);
-        //kembali ke halaman awal 
+        //kembali ke halaman awal
         return redirect('/siswakelas');
     }
     //====================AKHIR METHODE UNTUK TAMBAH siswa=================
@@ -130,7 +133,7 @@ class SiswaKelasController extends Controller
     //====================AWAL METHODE UNTUK EDIT siswa=================
     public function siswakelasedit($idsiswakelas, Request $request)
     {
-        $this->validate($request, [
+        $request->validate([
             'idsiswakelas' => 'required',
             'idsiswa' => 'required',
             'nis' => 'required',
@@ -138,13 +141,17 @@ class SiswaKelasController extends Controller
             'idkelas' => 'required'
         ]);
 
+
         $siswakelas = SiswaKelasModel::find($idsiswakelas);
         $siswakelas->idsiswakelas = $request->idsiswakelas;
         $siswakelas->idthnajaran = $request->idthnajaran;
         $siswakelas->idkelas = $request->idkelas;
-    
+        $siswakelas->idsiswa = $request->idsiswa;
+        $siswakelas->nis = $request->nis;
+
+
         $siswakelas->save();
-    
+
         return redirect()->back();
     }
     //====================AKHIR METHODE UNTUK EDIT siswa=================

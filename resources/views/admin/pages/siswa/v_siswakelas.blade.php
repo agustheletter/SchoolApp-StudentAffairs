@@ -33,6 +33,7 @@
         </div>
     </form>
 
+
     <script type="text/javascript">
         $(document).ready(function() {
             $('#carikelas').select2({
@@ -43,6 +44,8 @@
     </script>
 
     <p>
+
+
 
 
 @endsection

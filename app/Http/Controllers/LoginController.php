@@ -2,24 +2,24 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\LoginModel;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Auth;
-
-//panggil model Tahun Ajaran
 use App\Models\TahunAjaranModel;
 
-//panggil model Login
-use App\Models\LoginModel;
+//panggil model Tahun Ajaran
+use Illuminate\Support\Facades\DB;
 
-use Session;
+//panggil model Login
+use Illuminate\Support\Facades\Auth;
+
+use Illuminate\Support\Facades\Session;
 
 class LoginController extends Controller
 {
     //Fungsi menampilkan halaman Login
     public function login()
     {
-        if (Auth::check()) 
+        if (Auth::check())
         {
             return redirect('home');
         }
@@ -41,7 +41,7 @@ class LoginController extends Controller
         ];
 
 
-        if (Auth::Attempt($data)) 
+        if (Auth::Attempt($data))
         {
             // menangkap data ID tahun ajaran
             $katakunci = $request->thnajaran;
@@ -71,7 +71,7 @@ class LoginController extends Controller
             return redirect('/');
         }
     }
-    
+
 
     //Fungsi untuk LOGOUT
     public function logoutaksi()
