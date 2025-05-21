@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DspController;
+use App\Http\Controllers\GuruController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\JenisBayarDetailController;
 use App\Http\Controllers\JurusanController;
@@ -104,6 +105,14 @@ Route::put('/thnajaran/edit/{idthnajaran}', [TahunAjaranController::class,'thnaj
 
 //========================AKHIR ROUTE SISWA========================
 
+//=========================AWAL ROUTE GURU=========================
+Route::get('/guru', [GuruController::class, 'guru'])->middleware('auth');
+Route::post('/guru/tambahaksi', [GuruController::class, 'gurutambah'])->name('guru.tambah');
+Route::get('/guru/hapus/{idguru}', [GuruController::class, 'guruhapus'])->middleware('auth');
+Route::put('/guru/edit/{idguru}', [GuruController::class, 'guruedit'])->middleware('auth');
+Route::get('/gurudetail', [GuruController::class, 'gurudetail'])->middleware('auth');
+//========================AKHIR ROUTE GURU========================
+
 
 //========================AWAL ROUTE MUTASI KELAS SISWA========================
 Route::get('/mutasikelas',[MutasiKelasController::class,'mutasikelas'])->middleware('auth');
@@ -122,11 +131,11 @@ Route::post('/siswakelas/tambah',[SiswaKelasController::class,'siswakelastambah'
 Route::get('/siswakelas/hapus/{idsiswakelas}',[SiswaKelasController::class,'siswakelashapus'])->middleware('auth');
 Route::put('/siswakelas/edit/{idsiswakelas}', [SiswaKelasController::class,'siswakelasedit'])->middleware('auth');
 
-// Route::get('/siswakelas', function () 
+// Route::get('/siswakelas', function ()
 // {
 //         $kelas = Carbon::parse(request()->kelas);
 //         $data = App\Models\KelasModel::where('kelas',[$kelas])->get();
-    
+
 //     return view('siswakelas', compact('data'))
 // })->middleware('auth');
 

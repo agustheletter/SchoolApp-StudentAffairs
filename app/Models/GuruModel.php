@@ -12,7 +12,7 @@ class GuruModel extends Model
     protected $primaryKey   = 'idguru';
     protected $keyType      = 'string';
     public $incrementing    = false;
-    protected $fillable     = ['idguru','nip','nuptk','namaguru','tmplahir','tgllahir','jk','alamat','idagama','tlprumah','hpguru','photoguru','statusaktif'];
+    protected $fillable     = ['idguru','nip','nuptk','namaguru','tempatlahir','tgllahir','jk','alamat','idagama','tlprumah','hpguru','photoguru','statusaktif'];
 
     public function agama()
     {
