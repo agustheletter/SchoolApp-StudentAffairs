@@ -15,7 +15,8 @@
     <p>
 
         <!-- Awal membuat table-->
-    <table class="table table-bordered table-striped table-hover" id="table-guru">
+    <div style="overflow-x: auto;">
+        <table class="table table-bordered table-striped table-hover" id="table-guru">
         <!-- Awal header table-->
         <thead>
             <tr>
@@ -315,14 +316,14 @@
             @endforeach
         <tbody
         <!-- Akhir menampilkan data dalam table-->
-    </table>
+        </table>
+    </div>
 
     <script type="text/javascript">
         $(document).ready(function() {
             $('#table-guru').DataTable();
         });
     </script>
-
 
     {{-- <script type="text/javascript">
         $(document).ready(function() {
@@ -334,10 +335,7 @@
         } );
     </script> --}}
 
-
     <!-- Akhir membuat table-->
-
-
 
     {{-- <!--awal pagination-->
     Halaman : {{ $guru->currentPage() }} <br />
@@ -346,10 +344,6 @@
 
     {{ $guru->links() }}
     <!--akhir pagination--> --}}
-
-
-
-
 
     <!-- Awal Modal Tambah data GURU -->
 
@@ -462,13 +456,7 @@
 </div>
     <!-- Akhir Modal Tambah data GURU -->
 
-
-
 @endsection
 <!--akhir isi konten dinamis-->
-
-
-
-
 
 <!--akhir konten dinamis-->

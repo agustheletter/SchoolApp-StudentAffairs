@@ -18,10 +18,10 @@ class GuruController extends Controller
     }
 
     public function formTambahGuru()
-{
-    $agama = AgamaModel::all(); // ambil data agama untuk dropdown
-    return view('admin.pages.guru.v_gurutambah', compact('agama'));
-}
+    {
+        $agama = AgamaModel::all(); // ambil data agama untuk dropdown
+        return view('admin.pages.guru.v_gurutambah', compact('agama'));
+    }
 
 
     // TAMBAH GURU

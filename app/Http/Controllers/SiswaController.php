@@ -39,51 +39,50 @@ class SiswaController extends Controller
     }
     //===================AKHIR METHODE UNTUK TAMPIL siswa================
 
-
-
     //====================AWAL METHODE UNTUK TAMBAH siswa=================
     //method tambah data siswa dengan eloquent
     public function siswatambah(Request $request)
     {
-        //dd($request->all());
+        // dd($request->all());
         $request->validate([
-            //'idsiswa' => 'required',
+            'idsiswa' => 'required',
             'nis' => 'required',
             'nisn' => 'required',
             'namasiswa' => 'required',
-            'tmplahir' => 'required',
+            'tempatlahir' => 'required',
             'tgllahir' => 'required',
             'jk' => 'required',
             'alamat' => 'required',
             'idagama' => 'required',
             'tlprumah' => 'required',
             'hpsiswa' => 'required',
-            //'photo' => 'required',
+            'photosiswa' => 'nullable|image',
             'idthnajaran' => 'required'
         ]);
 
         // menyimpan data file yang diupload ke variabel $file
-        $filephoto = $request->file('photo');
-        $namafile = time() . "_" . $filephoto->getClientOriginalName();
+        $namafile = null;
 
-        // isi dengan nama folder tempat kemana file diupload
-        $tujuanupload = 'PhotoSiswa';
-        $filephoto->move($tujuanupload, $namafile);
+        if ($request->hasFile('photosiswa')) {
+            $file = $request->file('photosiswa');
+            $namafile = time() . "_" . $file->getClientOriginalName();
+            $file->move('PhotoSiswa', $namafile);
+        }
 
         //siswaModel::create([
         SiswaModel::create([
-            //'idsiswa' => $request->idsiswa,
+            'idsiswa' => $request->idsiswa,
             'nis' => $request->nis,
             'nisn' => $request->nisn,
             'namasiswa' => $request->namasiswa,
-            'tmplahir' => $request->tmplahir,
+            'tempatlahir' => $request->tempatlahir,
             'tgllahir' => $request->tgllahir,
             'jk' => $request->jk,
             'alamat' => $request->alamat,
             'idagama' => $request->idagama,
             'tlprumah' => $request->tlprumah,
             'hpsiswa' => $request->hpsiswa,
-            'photo' => $namafile,
+            'photosiswa' => $namafile,
             'idthnajaran' => $request->idthnajaran
         ]);
 
@@ -98,7 +97,7 @@ class SiswaController extends Controller
     public function siswahapus($idsiswa)
     {
         $siswa = SiswaModel::find($idsiswa);
-        File::delete('PhotoSiswa/'.$siswa->photo);
+        File::delete('PhotoSiswa/'.$siswa->photosiswa);
         $siswa->delete();
 
         return redirect()->back();
@@ -115,35 +114,36 @@ class SiswaController extends Controller
             'nis' => 'required',
             'nisn' => 'required',
             'namasiswa' => 'required',
-            'tmplahir' => 'required',
+            'tempatlahir' => 'required',
             'tgllahir' => 'required',
             'jk' => 'required',
             'alamat' => 'required',
             'idagama' => 'required',
             'tlprumah' => 'required',
             'hpsiswa' => 'required',
-            'photo' => 'required',
+            'photosiswa' => 'nullable|image',
             'idthnajaran' => 'required'
         ]);
 
-        $filephoto = $request->file('photo');
-        if($filephoto){
-            // menyimpan data file yang diupload ke variabel $file
+        $siswa = siswaModel::find($idsiswa);
+        if ($request->hasFile('photosiswa')) {
+            if ($siswa->photosiswa && file_exists(public_path('PhotoSiswa/' . $siswa->photosiswa))) {
+                //HAPUS PHOTO SEBELUMNYA SEBELUM DI EDIT
+                File::delete(public_path('PhotoSiswa/' . $siswa->photosiswa));
+            }
 
-            $namafile = time() . "_" . $filephoto->getClientOriginalName();
-
-            // isi dengan nama folder tempat kemana file diupload
-            $tujuanupload = 'PhotoSiswa';
-            $filephoto->move($tujuanupload, $namafile);
+            $file = $request->file('photosiswa');
+            $namafile = time() . "_" . $file->getClientOriginalName();
+            $file->move(public_path('PhotoSiswa'), $namafile);
+            $siswa->photosiswa = $namafile; // simpan hanya nama file
         }
 
-        $siswa = siswaModel::find($idsiswa);
         //dd($siswa);
         //$siswa->idsiswa = $request->idsiswa;
         $siswa->nis = $request->nis;
         $siswa->nisn = $request->nisn;
         $siswa->namasiswa = $request->namasiswa;
-        $siswa->tmplahir = $request->tmplahir;
+        $siswa->tempatlahir = $request->tempatlahir;
         $siswa->tgllahir = $request->tgllahir;
         $siswa->jk = $request->jk;
         $siswa->alamat = $request->alamat;
@@ -156,7 +156,7 @@ class SiswaController extends Controller
         //     "nis" => $request->nis,
         //     "nisn" => $request->nisn,
         //     "namasiswa" => $request->namasiswa,
-        //     "tmplahir" => $request->tmplahir,
+        //     "tempatlahir" => $request->tempatlahir,
         //     "tgllahir" => $request->tgllahir,
         //     "jk" => $request->jk,
         //     "alamat" => $request->alamat,
@@ -166,9 +166,6 @@ class SiswaController extends Controller
         //     "idthnajaran" => $request->idthnajaran,
         // ]);
 
-        //HAPUS PHOTO SEBELUMNYA SEBELUM DI EDIT
-        File::delete('PhotoSiswa/'.$siswa->photo);
-        $siswa->photo = $namafile;
 
         $siswa->save();
 

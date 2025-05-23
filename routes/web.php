@@ -4,6 +4,7 @@ use App\Http\Controllers\DspController;
 use App\Http\Controllers\GuruController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\JenisBayarDetailController;
+use App\Http\Controllers\JenisPelanggaraController;
 use App\Http\Controllers\JurusanController;
 use App\Http\Controllers\KelasController;
 use App\Http\Controllers\KelasDetailController;
@@ -14,8 +15,11 @@ use App\Http\Controllers\ProgramKeahlianController;
 use App\Http\Controllers\RuanganController;
 use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\SiswaKelasController;
+use App\Http\Controllers\SiswaPelanggaranController;
 use App\Http\Controllers\SppController;
 use App\Http\Controllers\TahunAjaranController;
+use App\Models\JenisPelanggaranModel;
+use App\Models\SiswaPelanggaran;
 use Illuminate\Support\Facades\Route;
 
 // Route::get('/', function () {
@@ -104,6 +108,21 @@ Route::put('/thnajaran/edit/{idthnajaran}', [TahunAjaranController::class,'thnaj
     //AKHIR CARI SISWA
 
 //========================AKHIR ROUTE SISWA========================
+
+//=========================AWAL ROUTE PELANGGARAN=========================
+Route::get('/pelanggaran', [SiswaPelanggaranController::class, 'pelanggaran'])->middleware('auth');
+Route::post('/pelanggaran/tambahaksi', [SiswaPelanggaranController::class, 'pelanggarantambah'])->name('guru.tambah');
+Route::get('/pelanggaran/hapus/{idpelanggaran}', [SiswaPelanggaranController::class, 'pelanggaranhapus'])->middleware('auth');
+Route::put('/pelanggaran/edit/{idpelanggaran}', [SiswaPelanggaranController::class, 'pelanggaranedit'])->middleware('auth');
+Route::get('/pelanggarandetail', [SiswaPelanggaranController::class, 'pelanggarandetail'])->middleware('auth');
+//========================AKHIR ROUTE PELANGGARAN========================
+
+//=========================AWAL ROUTE Jenis PELANGGARAN=========================
+Route::get('/jenispelanggaran', [JenisPelanggaraController::class, 'JenisPelanggaran'])->middleware('auth');
+Route::post('/jenispelanggaran/tambahaksi', [JenisPelanggaraController::class, 'jenispelanggarantambah'])->name('jenispelanggaran.tambah');
+Route::delete('/jenispelanggaran/hapus/{idpelanggaran}', [JenisPelanggaraController::class, 'jenispelanggaranhapus'])->middleware('auth');
+Route::put('/jenispelanggaran/edit/{idpelanggaran}', [JenisPelanggaraController::class, 'jenispelanggaranedit'])->middleware('auth');
+//========================AKHIR ROUTE Jenis PELANGGARAN========================
 
 //=========================AWAL ROUTE GURU=========================
 Route::get('/guru', [GuruController::class, 'guru'])->middleware('auth');

@@ -12,7 +12,7 @@ class SiswaModel extends Model
     protected $primaryKey   = 'idsiswa';
     protected $keyType      = 'string';
     public $incrementing    = false;
-    protected $fillable     = ['idsiswa','nis', 'nisn','namasiswa','tmplahir','tgllahir','jk','alamat','idagama','tlprumah','hpsiswa','photosiswa','idthnajaran'];
+    protected $fillable     = ['idsiswa','nis', 'nisn','namasiswa','tempatlahir','tgllahir','jk','alamat','idagama','tlprumah','hpsiswa','photosiswa','idthnajaran'];
 
     public function agama()
     {
@@ -21,12 +21,17 @@ class SiswaModel extends Model
 
     public function thnajaran()
     {
-        return $this->belongsTo('App\Models\TahunAjaranModel','idthnmasuk');
+        return $this->belongsTo('App\Models\TahunAjaranModel','idthnajaran');
     }
 
     public function siswakelas()
     {
         return $this->hasMany('App\Models\SiswaKelasModel','idsiswa');
+    }
+
+    public function siswapelanggaran()
+    {
+        return $this->hasMany('App\Models\SiswaPelanggaran','idsiswa');
     }
 
     public function bayar()

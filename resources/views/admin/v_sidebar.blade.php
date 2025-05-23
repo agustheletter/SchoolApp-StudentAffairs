@@ -138,7 +138,7 @@
                         </li>
                         <!--Akhir Kelas Detail-->
 
-                        
+
                     </ul>
                 </li>
                 <!--Akhir MASTER DATA-->
@@ -194,7 +194,37 @@
                 </li>
                 <!--Akhir Siswa-->
 
-
+                <!--Awal Pelanggaran-->
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        {{-- <i class="fa fa-graduation-cap" aria-hidden="true"></i> --}}
+                        <i class="fa fa-balance-scale" aria-hidden="true"></i>
+                        <p>
+                            Pelanggaran
+                            <i class="fas fa-angle-left right"></i>
+                            <span class="badge badge-info right">2</span>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <!--Awal Master Pelanggran-->
+                        <li class="nav-item">
+                            <a href="{{url('pelanggaran')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Data Master Pelanggaran</p>
+                            </a>
+                        </li>
+                        <!--Akhir Master Pelanggaran-->
+                        <!--Awal Jenis Pelanggran-->
+                        <li class="nav-item">
+                            <a href="{{url('jenispelanggaran')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Data Jenis Pelanggaran</p>
+                            </a>
+                        </li>
+                        <!--Akhir Master Pelanggaran-->
+                    </ul>
+                </li>
+                <!--Akhir Pelanggaran-->
 
                 <!--Awal Guru-->
                 <li class="nav-item">
@@ -278,20 +308,12 @@
                             </a>
                         </li>
 
-                        
+
                     </ul>
                 </li>
                 <!--Akhir Pembayaran-->
 
 
-                
-                
-
-
-                
-
-
-                
 
 
 
@@ -304,7 +326,15 @@
 
 
 
-{{-- 
+
+
+
+
+
+
+
+
+{{--
                 <li class="nav-item">
                     <a href="../gallery.html" class="nav-link">
                         <i class="nav-icon far fa-image"></i>

@@ -13,7 +13,8 @@
     <p>
 
         <!-- Awal membuat table-->
-    <table class="table table-bordered table-striped table-hover" id="table-siswa">
+    <div style="overflow-x: auto;">
+        <table class="table table-bordered table-striped table-hover" id="table-siswa">
         <!-- Awal header table-->
         <thead>
             <tr>
@@ -80,7 +81,7 @@
         <!-- Awal menampilkan data dalam table-->
         <tbody>
             @foreach ($siswa as $index=> $s)
-                <tr> 
+                <tr>
                     <td align="center" scope="row">{{ $index + 1 }}</td>
                     <td align="center">{{ $s->nis }}</td>
                     <td align="center">{{ $s->nisn }}</td>
@@ -92,7 +93,7 @@
                     <td>{{ optional($s->agama)->agama }}</td>
                     <td>{{ $s->tlprumah }}</td>
                     <td>{{ $s->hpsiswa }}</td>
-                    <td><img width="60px" src="{{ url('/PhotoSiswa/' . $s->photo) }}"></td>
+                    <td><img width="60px" src="{{ url('/PhotoSiswa/' . $s->photosiswa) }}"></td>
                     <td align="center">{{ $s->thnajaran->thnajaran }}</td>
 
                     <td align="center">
@@ -117,7 +118,7 @@
                                             <!--z@csrf-->
                                             {{ csrf_field() }}
                                             {{ method_field('PUT') }}
-                                                                    
+
                                             <div class="form-group row">
                                                 <label for="nis" class="col-sm-3 col-form-label text-left">NIS</label>
                                                 <div class="col-sm-9">
@@ -156,29 +157,15 @@
                                             <div class="form-group row">
                                                 <label for="jk" class="col-sm-3 col-form-label text-left">Jenis Kelamin</label>
                                                 <div class="col-sm-9 input-group">
-                                                    @if ($s->jk == "Laki-laki")
-                                                        <div class="input-group-text">
-                                                            <input type="radio" id="jk" name="jk" value="Laki-laki" checked>
-                                            
-                                                        </div>
-                                                        Laki-laki
+                                                    <div class="input-group-text">
+                                                        <input type="radio" id="jk" name="jk" value="L" {{ $s->jk == 'L' ? 'checked' : '' }}>
+                                                    </div>
+                                                    Laki-laki
 
-                                                        <div class="input-group-text">
-                                                            <input type="radio" id="jk" name="jk" value="Perempuan">
-                                                        </div>
-                                                        Perempuan
-                                                    @else
-                                                        <div class="input-group-text">
-                                                            <input type="radio" id="jk" name="jk" value="Laki-laki" >
-                                            
-                                                        </div>
-                                                        Laki-laki
-
-                                                        <div class="input-group-text">
-                                                            <input type="radio" id="jk" name="jk" value="Perempuan" checked>
-                                                        </div>
-                                                        Perempuan
-                                                    @endif      
+                                                    <div class="input-group-text">
+                                                        <input type="radio" id="jk" name="jk" value="P" {{ $s->jk == 'P' ? 'checked' : '' }}>
+                                                    </div>
+                                                    Perempuan
                                                 </div>
                                             </div>
 
@@ -218,11 +205,12 @@
                                                 </div>
                                             </div>
 
-                                            <div class="form-group row">
-                                                <label for="photo" class="col-sm-3 col-form-label text-left">Photo</label>
-                                                <div class="col-sm-9 text-left">
-                                                    <input type="file" id="photo" name="photo">
-                                                </div>
+                                            <div class="form-group">
+                                                <label>Foto Siswa (kosongkan jika tidak ingin ganti)</label><br>
+                                                @if($s->photosiswa)
+                                                    <img src="{{ url('/PhotoSiswa/' . $s->photosiswa) }}" width="80px"><br><br>
+                                                @endif
+                                                <input type="file" name="photosiswa" class="form-control-file">
                                             </div>
 
                                             <div class="form-group row">
@@ -239,8 +227,8 @@
                                                     </select>
                                                 </div>
                                             </div>
-                                            
-                                            
+
+
                                             <div class="modal-footer">
                                                 <button type="button" name="tutup" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
                                                 <button type="submit" name="siswaedit" class="btn btn-success">Edit</button>
@@ -292,7 +280,8 @@
             @endforeach
         <tbody
         <!-- Akhir menampilkan data dalam table-->
-    </table>
+        </table>
+    </div>
 
     <script type="text/javascript">
         $(document).ready(function() {
@@ -315,7 +304,7 @@
     <!-- Akhir membuat table-->
 
 
-    
+
     {{-- <!--awal pagination-->
     Halaman : {{ $siswa->currentPage() }} <br />
     Jumlah Data : {{ $siswa->total() }} <br />
@@ -325,7 +314,7 @@
     <!--akhir pagination--> --}}
 
 
-    
+
 
     <!-- Awal Modal tambah data siswa -->
     <div class="modal fade" id="modalTambahSiswa" tabindex="-1" role="dialog" aria-labelledby="modalTambahSiswaLabel"
@@ -342,6 +331,12 @@
 
                     <form name="formsiswatambah" id="formsiswatambah" action="/siswa/tambah " method="post" enctype="multipart/form-data">
                         @csrf
+                        <div class="form-group row">
+                            <label for="idsiswa" class="col-sm-3 col-form-label">ID Siswa</label>
+                            <div class="col-sm-9">
+                                <input type="text" name="idsiswa" class="form-control" id="idsiswa" placeholder="Masukan ID Siswa" required>
+                            </div>
+                        </div>
                         <div class="form-group row">
                             <label for="nis" class="col-sm-3 col-form-label">NIS</label>
                             <div class="col-sm-9">
@@ -379,19 +374,14 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
-                            
+                        <div class="form-group">
                             <label for="jk" class="col-sm-3 col-form-label">Jenis Kelamin</label>
-                            <div class="col-sm-9 input-group">
-                                <div class="input-group-text">
-                                    <input type="radio" name="jk" value="Laki-laki">
-                                </div>
-                                Laki-laki 
-
-                                <div class="input-group-text">
-                                    <input type="radio" name="jk" value="Perempuan">
-                                </div>
-                                Perempuan 
+                            <div class="col-sm-9">
+                                <select name="jk" class="form-control" required>
+                                    <option value="">Pilih Jenis Kelamin</option>
+                                    <option value="L">Laki-laki</option>
+                                    <option value="P">Perempuan</option>
+                                </select>
                             </div>
                         </div>
 
@@ -432,17 +422,17 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="photo" class="col-sm-3 col-form-label">Photo</label>
+                            <label for="photosiswa" class="col-sm-3 col-form-label">Photo</label>
                             <div class="col-sm-9">
-                                <input type="file" id="photo" name="photo">
+                                <input type="file" id="photosiswa" name="photosiswa">
                             </div>
                         </div>
 
                         <div class="form-group row">
                             <label for="idthnajaran" class="col-sm-3 col-form-label">Tahun Masuk</label>
                             <div class="col-sm-9">
-                                <select type="text" class="form-control" id="idthnajaran" name="idthnajaran">
-                                    <option></option>
+                                <select class="form-control" id="idthnajaran" name="idthnajaran" required>
+                                    <option value="">-- Pilih Tahun Masuk --</option>
                                     @foreach ($thnajaran as $t)
                                         <option value="{{ $t->idthnajaran }}">{{ $t->thnajaran }}</option>
                                     @endforeach
@@ -452,7 +442,7 @@
 
                         <div class="modal-footer">
                             <button type="button" name="tutup" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                            <button type="submit" name="tambahsiswa" class="btn btn-success">Tambah</button>
+                            <button type="submit" name="siswatambah" class="btn btn-success">Tambah</button>
                         </div>
                     </form>
 
