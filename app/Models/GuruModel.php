@@ -28,4 +28,9 @@ class GuruModel extends Model
     {
         return $this->hasMany('App\Models\MengajarModel','idguru');
     }
+
+    public function dispen()
+    {
+        return $this->hasMany('App\Models\DispenModel','idguru');
+    }
 }
