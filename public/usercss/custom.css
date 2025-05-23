@@ -1,0 +1,29 @@
+/* =========== MAIN CSS START =========== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* =========== MAIN CSS END =========== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* =========== LANDING PAGE CSS START =========== */
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    padding: 0 1rem;
+    margin: 0 auto;
+}
+
+/* =========== LANDING PAGE CSS END =========== */

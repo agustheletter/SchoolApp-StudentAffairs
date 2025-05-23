@@ -18,6 +18,7 @@ use App\Http\Controllers\SiswaKelasController;
 use App\Http\Controllers\SiswaPelanggaranController;
 use App\Http\Controllers\SppController;
 use App\Http\Controllers\TahunAjaranController;
+use App\Http\Controllers\UserController;
 use App\Models\JenisPelanggaranModel;
 use App\Models\SiswaPelanggaran;
 use Illuminate\Support\Facades\Route;
@@ -28,20 +29,20 @@ use Illuminate\Support\Facades\Route;
 
 
 //=========================AWAL ROUTE USER=========================
-Route::get('/user/home', [LoginController::class,'login'])->name('login');
-Route::post('loginaksi', [LoginController::class,'loginaksi'])->name('loginaksi');
+Route::get('/', [UserController::class,'landingPage'])->name('landingpage');
+Route::get('/home', [UserController::class,'landingPage'])->name('landingpage');
 //=========================AWAL ROUTE USER=========================
 
 
 //=========================AWAL ROUTE LOGIN=========================
-Route::get('/', [LoginController::class,'login'])->name('login');
+Route::get('/admin', [LoginController::class,'login'])->name('login');
 Route::post('loginaksi', [LoginController::class,'loginaksi'])->name('loginaksi');
 Route::get('logoutaksi', [LoginController::class,'logoutaksi'])->name('logoutaksi')->middleware('auth');
 //=========================AWAL ROUTE LOGIN=========================
 
 
 //=========================AWAL ROUTE HOME=========================
-Route::get('/home', [HomeController::class,'home'])->name('home')->middleware('auth');
+Route::get('/homeadmin', [HomeController::class,'home'])->name('home')->middleware('auth');
 Route::get('/about', [HomeController::class,'about'])->middleware('auth');
 //=========================AKHIR ROUTE HOME=========================
 
