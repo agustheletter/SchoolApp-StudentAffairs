@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Aplikasi SPP | SMK Negeri 1 Cimahi</title>
+        <title>Aplikasi Kesiswaan | SMK Negeri 1 Cimahi</title>
 
         <!-- Google Font: Source Sans Pro -->
         <link rel="stylesheet"
@@ -34,23 +34,23 @@
                 </h2> --}}
                 <hr>
                 @if (session('error'))
-                    <div class="alert alert-danger"> 
-                        <b>Opps!</b> 
-                        {{ session('error') }} 
+                    <div class="alert alert-danger">
+                        <b>Opps!</b>
+                        {{ session('error') }}
                     </div>
                 @endif
 
-                <form action="{{ route('loginaksi') }}" method="post"> 
-                    @csrf 
+                <form action="{{ route('loginaksi') }}" method="post">
+                    @csrf
                     <div class="form-group">
-                        <label>Email</label> 
-                        <input type="email" name="email" class="form-control" placeholder="Email" required=""> 
+                        <label>Email</label>
+                        <input type="email" name="email" class="form-control" placeholder="Email" required="">
                     </div>
 
                     <div class="form-group">
                         <label>Password</label>
-                        <input type="password" name="password" class="form-control" placeholder="Password" required=""> 
-                    </div> 
+                        <input type="password" name="password" class="form-control" placeholder="Password" required="">
+                    </div>
 
                     <div class="form-group">
                         <label>Tahun Ajaran</label>
@@ -60,19 +60,19 @@
                                 <option value="{{ $t->idthnajaran }}">{{ $t->thnajaran }}</option>
                             @endforeach
                         </select>
-                    </div> 
-                    
-                    
+                    </div>
+
+
                     <button type="submit" class="btn btn-primary btn-block">
                         Log In
                     </button>
 
                     <hr>
                     {{-- <p class="text-center">
-                        Belum punya akun? 
+                        Belum punya akun?
                         <a href="#">
                             Register
-                        </a> 
+                        </a>
                         sekarang!
                     </p> --}}
                 </form>

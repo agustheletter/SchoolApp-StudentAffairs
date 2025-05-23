@@ -4,7 +4,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Aplikasi Keuangan | SMK Negeri 1 Cimahi | @yield('title')</title>
+        <title>Aplikasi Kesiswaan | SMK Negeri 1 Cimahi | @yield('title')</title>
 
         <!-- Google Font: Source Sans Pro -->
         <link rel="stylesheet"
@@ -14,10 +14,10 @@
         <!-- Theme style -->
         <link rel="stylesheet" href="{{ asset('TemplateAdminLTE') }}/dist/css/adminlte.min.css">
 
-        
+
 
         <!--DATA TABLE MENGGUNKAN CDN-->
-        {{-- <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"> 
+        {{-- <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css"> --}}
 
 
@@ -60,7 +60,7 @@
         <!-- Bootstrap 4 -->
         <script src="{{ asset('TemplateAdminLTE') }}/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
         <!--<script src="{{ asset('TemplateAdminLTE') }}/dist/select2/js/select2.full.min.js"></script>-->
-        
+
         <!-- AdminLTE App -->
         <script src="{{ asset('TemplateAdminLTE') }}/dist/js/adminlte.min.js"></script>
         <!-- AdminLTE for demo purposes -->
@@ -68,6 +68,6 @@
         @stack('script')
     </body>
 
-    
+
 
 </html>

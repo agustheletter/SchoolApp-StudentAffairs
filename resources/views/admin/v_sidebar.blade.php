@@ -1,10 +1,8 @@
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="{{ asset('template') }}/index3.html" class="brand-link">
-        <img src="{{ asset('template') }}/dist/img/AdminLTELogo.png" alt="AdminLTE Logo"
-            class="brand-image img-circle elevation-3" style="opacity: .8">
-        <span class="brand-text font-weight-light">Aplikasi Keuangan</span>
+    <a href="/adminhome" class="brand-link">
+        <span class="brand-text font-weight-light">Aplikasi Kesiswaan</span>
     </a>
 
     <!-- Sidebar -->
@@ -258,60 +256,6 @@
                     </ul>
                 </li>
                 <!--Akhir Guru-->
-
-
-
-                <!--Awal Pembayaran-->
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="fas fa-dollar-sign"></i>
-                        <p>
-                            Pembayaran
-                            <i class="fas fa-angle-left right"></i>
-                            <span class="badge badge-info right">4</span>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="{{url('spp')}}" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>SPP</p>
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a href="/dsp" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>DSP</p>
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a href="/daftarulang" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Daftar Ulang</p>
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a href="/laporan" class="nav-link">
-                                {{-- <i class="nav-icon fas fa-chart-pie"></i> --}}
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Laporan Pembayaran</p>
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a href="/jenisbayardetail" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Jenis Pembayaran</p>
-                            </a>
-                        </li>
-
-
-                    </ul>
-                </li>
-                <!--Akhir Pembayaran-->
 
 
 
