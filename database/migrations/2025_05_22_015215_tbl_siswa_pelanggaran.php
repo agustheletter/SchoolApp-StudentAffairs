@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('tbl_siswapelanggaran', function (Blueprint $table) {
             $table->increments('idpelanggaran');
             $table->unsignedBigInteger('idsiswa');
-            $table->unsignedBigInteger('id_jenispelanggaran');
+            $table->unsignedBigInteger('idjenispelanggaran');
             $table->text('keterangan')->nullable();
             $table->string('photobukti')->nullable();
             $table->date('tanggal');

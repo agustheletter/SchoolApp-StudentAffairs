@@ -27,6 +27,12 @@ use Illuminate\Support\Facades\Route;
 // });
 
 
+//=========================AWAL ROUTE USER=========================
+Route::get('/user/home', [LoginController::class,'login'])->name('login');
+Route::post('loginaksi', [LoginController::class,'loginaksi'])->name('loginaksi');
+//=========================AWAL ROUTE USER=========================
+
+
 //=========================AWAL ROUTE LOGIN=========================
 Route::get('/', [LoginController::class,'login'])->name('login');
 Route::post('loginaksi', [LoginController::class,'loginaksi'])->name('loginaksi');
