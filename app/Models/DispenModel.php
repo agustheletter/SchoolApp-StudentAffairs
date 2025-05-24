@@ -19,8 +19,13 @@ class DispenModel extends Model
         return $this->belongsTo('App\Models\GuruModel','idguru');
     }
 
-    public function dispen()
+    public function dispendetails()
     {
-        return $this->hasMany('App\Models\DispenDetailModel','iddispen');
+        return $this->hasMany(DispenDetailModel::class, 'iddispen');
+    }
+
+     public function siswa()
+    {
+        return $this->belongsToMany(SiswaModel::class, 'tbl_dispendetail', 'iddispen', 'idsiswa');
     }
 }

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DispenController;
 use App\Http\Controllers\DspController;
 use App\Http\Controllers\GuruController;
 use App\Http\Controllers\HomeController;
@@ -166,6 +167,15 @@ Route::put('/siswakelas/edit/{idsiswakelas}', [SiswaKelasController::class,'sisw
 // })->middleware('auth');
 
 //========================AKHIR ROUTE SISWA KELAS========================
+
+//=========================AWAL ROUTE Dispen=========================
+Route::get('/dispen', [DispenController::class, 'dispen'])->middleware('auth');
+Route::post('/dispen/tambahaksi', [DispenController::class, 'dispentambah'])->name('guru.tambah');
+Route::get('/dispen/hapus/{idpelanggaran}', [DispenController::class, 'dispenhapus'])->middleware('auth');
+Route::put('/dispen/edit/{idpelanggaran}', [DispenController::class, 'dispenedit'])->middleware('auth');
+Route::get('/dispen/edit/{iddispen}', [DispenController::class, 'dispeneditform'])->middleware('auth');;
+Route::get('/pelanggarandetail', [DispenController::class, 'dispendetail'])->middleware('auth');
+//========================AKHIR ROUTE Dispen========================
 
 
 //=========================AWAL ROUTE BAYAR SPP=========================

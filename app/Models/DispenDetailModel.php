@@ -10,9 +10,9 @@ class DispenDetailModel extends Model
     use HasFactory;
     protected $table        = "tbl_dispendetail";
     protected $primaryKey   = 'iddispendetail';
-    protected $keyType      = 'string';
-    public $incrementing    = false;
-    protected $fillable     = ['iddispendetail','iddispen','idsiswa'];
+    protected $keyType      = 'int';
+    public $incrementing    = true;
+    protected $fillable     = ['iddispen','idsiswa'];
 
     public function dispen()
     {

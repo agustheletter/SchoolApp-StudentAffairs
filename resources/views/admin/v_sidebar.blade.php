@@ -255,7 +255,31 @@
                         <!--Akhir Mengajar Guru-->
                     </ul>
                 </li>
-                <!--Akhir Guru-->   
+                <!--Akhir Guru-->
+
+                <!--Awal Dispensasi-->
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        {{-- <i class="fa fa-graduation-cap" aria-hidden="true"></i> --}}
+                        <i class="fas fa-envelope-open-text" aria-hidden="true"></i>
+                        <p>
+                            Dispensasi
+                            <i class="fas fa-angle-left right"></i>
+                            <span class="badge badge-info right">1</span>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <!--Awal Master Dispensasi-->
+                        <li class="nav-item">
+                            <a href="{{url('dispen')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Data Master Dispensasi</p>
+                            </a>
+                        </li>
+                        <!--Akhir Master Dispensasi-->
+                    </ul>
+                </li>
+                <!--Akhir Dispensasi-->
 
 
 
