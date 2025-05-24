@@ -21,7 +21,7 @@ class LoginController extends Controller
     {
         if (Auth::check())
         {
-            return redirect('homeadmin');
+            return redirect('/homeadmin');
         }
         else
         {
@@ -68,7 +68,7 @@ class LoginController extends Controller
         else
         {
             Session::flash('error', 'Email atau Password Salah');
-            return redirect('/');
+            return redirect('/admin');
         }
     }
 
@@ -77,7 +77,7 @@ class LoginController extends Controller
     public function logoutaksi()
     {
         Auth::logout();
-        return redirect('/');
+        return redirect('/admin');
     }
 
 }
