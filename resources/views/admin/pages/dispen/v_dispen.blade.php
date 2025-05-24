@@ -58,12 +58,6 @@
                                     </div>
                                     <div class="modal-body">
                                         <div class="form-group row">
-                                            <label for="iddispen" class="col-sm-3 col-form-label text-left">ID Dispen</label>
-                                            <div class="col-sm-9">
-                                                <input type="text" class="form-control" id="iddispen" name="iddispen" value="{{ $dis->iddispen }}">
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
                                             <label for="namadispen" class="col-sm-3 col-form-label text-left">Nama Dispen</label>
                                             <div class="col-sm-9">
                                                 <input type="text" class="form-control" id="namadispen" name="namadispen" value="{{ $dis->namadispen }}">
@@ -89,7 +83,7 @@
                                             </div>
                                         </div>
                                         @php
-                                            $selectedSiswaIds = $dis->siswa->pluck('idsiswa')->toArray();
+                                            $selectedSiswaIds = $dis->dispendetails->pluck('idsiswa')->toArray();
                                         @endphp
 
                                         <div class="form-group row">
@@ -158,10 +152,6 @@
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body">
-                    <div class="form-group">
-                        <label>ID Dispen</label>
-                        <input type="text" name="iddispen" class="form-control" required>
-                    </div>
                     <div class="form-group">
                         <label>Nama Dispen</label>
                         <input type="text" name="namadispen" class="form-control" required>

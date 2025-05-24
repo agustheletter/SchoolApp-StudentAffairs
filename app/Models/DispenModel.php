@@ -10,8 +10,8 @@ class DispenModel extends Model
     use HasFactory;
     protected $table        = "tbl_dispen";
     protected $primaryKey   = 'iddispen';
-    protected $keyType      = 'string';
-    public $incrementing    = false;
+    protected $keyType      = 'int';
+    public $incrementing    = true;
     protected $fillable     = ['iddispen','namadispen','waktumulai','waktuselesai','idguru'];
 
     public function guru()
