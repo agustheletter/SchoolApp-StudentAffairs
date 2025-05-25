@@ -97,7 +97,7 @@
 
                 {{-- Enhanced CTA Button --}}
                 <div data-aos="fade-up" data-aos-delay="600">
-                    <a href="{{ route('login') }}" class="cta-button relative inline-block px-8 py-3 bg-[#3d488f] text-white rounded-lg font-medium overflow-hidden group">
+                    <a href="{{ route('Request') }}" class="cta-button relative inline-block px-8 py-3 bg-[#3d488f] text-white rounded-lg font-medium overflow-hidden group">
                         <span class="relative z-10">Ajukan Dispensasi</span>
                         <span class="absolute inset-0 bg-[#3a478a] rounded-lg transform origin-bottom scale-y-0 group-hover:scale-y-100 transition-transform duration-300 ease-[cubic-bezier(0.68,-0.55,0.265,1.55)]"></span>
                         <span class="absolute inset-0 border-2 border-white rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>

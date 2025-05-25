@@ -51,7 +51,10 @@ class DispenController extends Controller
             ]);
         }
 
-        return redirect('/dispen')->with('success', 'Data berhasil ditambahkan.');
+        // Redirect based on where the request came from
+        return $request->has('from_admin') 
+            ? redirect('/dispen')->with('success', 'Data berhasil ditambahkan.')
+            : redirect('/request')->with('success', 'Permohonan dispensasi berhasil diajukan!');
     }
 
     //* HAPUS DISPEN*
@@ -107,4 +110,5 @@ class DispenController extends Controller
 
         return redirect()->back()->with('success', 'Data berhasil diperbarui.');
     }
+
 }

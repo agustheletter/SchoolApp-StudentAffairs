@@ -33,7 +33,10 @@ use Illuminate\Support\Facades\Route;
 //=========================AWAL ROUTE USER=========================
 Route::get('/', [UserController::class,'landingPage'])->name('landingpage');
 Route::get('/home', [UserController::class,'landingPage'])->name('landingpage');
-Route::get('/home', [UserController::class,'landingPage'])->name('landingpage');
+Route::get('/request', [UserController::class,'Request'])->name('Request');
+
+// Pengajuan Dispensasi
+Route::post('/request', [DispenController::class, 'dispentambah'])->name('dispen.store');
 //=========================AWAL ROUTE USER=========================
 
 
