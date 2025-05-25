@@ -7,6 +7,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\JenisBayarDetailController;
 use App\Http\Controllers\JenisPelanggaraController;
 use App\Http\Controllers\JurusanController;
+use App\Http\Controllers\KehadiranController;
 use App\Http\Controllers\KelasController;
 use App\Http\Controllers\KelasDetailController;
 use App\Http\Controllers\LaporanController;
@@ -125,6 +126,13 @@ Route::get('/pelanggaran/hapus/{idpelanggaran}', [SiswaPelanggaranController::cl
 Route::put('/pelanggaran/edit/{idpelanggaran}', [SiswaPelanggaranController::class, 'pelanggaranedit'])->middleware('auth');
 Route::get('/pelanggarandetail', [SiswaPelanggaranController::class, 'pelanggarandetail'])->middleware('auth');
 //========================AKHIR ROUTE PELANGGARAN========================
+
+//=========================AWAL ROUTE Jenis Kehadiran=========================
+Route::get('/kehadiran', [KehadiranController::class, 'kehadiran'])->middleware('auth');
+Route::post('/kehadiran/tambahaksi', [KehadiranController::class, 'kehadirantambah'])->name('kehadiran.tambah');
+Route::delete('/kehadiran/hapus/{idkehadiran}', [KehadiranController::class, 'kehadiranhapus'])->middleware('auth');
+Route::put('/kehadiran/edit/{idkehadiran}', [KehadiranController::class, 'kehadiranedit'])->middleware('auth');
+//========================AKHIR ROUTE Jenis PELANGGARAN========================
 
 //=========================AWAL ROUTE Jenis PELANGGARAN=========================
 Route::get('/jenispelanggaran', [JenisPelanggaraController::class, 'JenisPelanggaran'])->middleware('auth');

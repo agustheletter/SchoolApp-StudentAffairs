@@ -192,6 +192,30 @@
                 </li>
                 <!--Akhir Siswa-->
 
+                <!--Awal Kehadiran-->
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        {{-- <i class="fa fa-graduation-cap" aria-hidden="true"></i> --}}
+                        <i class="fas fa-user-alt" aria-hidden="true"></i>
+                        <p>
+                            Kehadiran
+                            <i class="fas fa-angle-left right"></i>
+                            <span class="badge badge-info right">1</span>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <!--Awal Master Kehgadiran-->
+                        <li class="nav-item">
+                            <a href="{{url('kehadiran')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Data Master Kehadiran</p>
+                            </a>
+                        </li>
+                        <!--Akhir Master Kehadiran-->
+                    </ul>
+                </li>
+                <!--Akhir Kehadiran-->
+
                 <!--Awal Pelanggaran-->
                 <li class="nav-item">
                     <a href="#" class="nav-link">
