@@ -1,0 +1,141 @@
+/* =========== MAIN CSS START =========== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-snap-type: y proximity;
+}
+
+body::-webkit-scrollbar {
+    width: 0px;
+}
+
+body {
+    background: white;
+}
+
+/* =========== MAIN CSS END =========== */
+
+
+
+
+/* =========== LANDING PAGE CSS START =========== */
+
+.container {
+    width: 100%;
+    min-height: 100vh;
+}
+
+section {
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+}
+
+//-------------------------------Home section
+.cta-button {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+.cta-button:hover {
+    scale: 1.05;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+.cta-button:active {
+    transform: translateY(1px);
+}
+
+/* =========== LANDING PAGE CSS END =========== */
+
+
+
+
+
+/* =========== NAVIGATION BAR START =========== */
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 18px;
+    color: white;
+    family: 'Poppins', sans-serif;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);   
+}
+
+.navbar-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo {
+    height: 40px;
+}
+
+.title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-right: 20px;
+}
+
+.nav-link {
+    color: white;
+    text-decoration: none;
+    padding: 5px 10px;
+    transition: background 0.3s ease;
+}
+
+.nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+}
+
+.navbar-right .login-button {
+    background-color: white;
+    color: #2e7d32;
+    padding: 6px 14px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.navbar-right .login-button:hover {
+    background-color: #1b5e20;
+    color: white;
+}
+
+#navbar.scrolled {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 
+                0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    background-color: rgba(45, 53, 107);
+    backdrop-filter: blur(10px);
+}
+
+#navbar {
+    transition: all 0.3s ease;
+}
+
+/* =========== NAVIGATION BAR END =========== */
+
+
+
+/* =========== ANIMATIONS START =========== */
+
+/* Typewriter animation */
+@keyframes typewriter {
+    from { width: 0 }
+    to { width: 100% }
+}
+.typewriter {
+    overflow: hidden;
+    white-space: nowrap;
+    animation: typewriter 1.5s steps(40) 0.5s 1 normal both;
+    display: inline-block;
+}
+
+/* =========== ANIMATIONS END =========== */
