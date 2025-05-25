@@ -1,7 +1,7 @@
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="/adminhome" class="brand-link">
+    <a href="/homeadmin" class="brand-link">
         <span class="brand-text font-weight-light">Aplikasi Kesiswaan</span>
     </a>
 
@@ -39,7 +39,7 @@
 
                 <!--Awal Dashboard-->
                 <li class="nav-item">
-                    <a href="{{url('/')}}" class="nav-link">
+                    <a href="{{url('/homeadmin')}}" class="nav-link">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
                             Dashboard

@@ -11,7 +11,7 @@
     <div class="container-fluid">
         <!-- Small boxes (Stat box) -->
         <div class="row">
-            <div class="col-lg-3 col-6">
+            {{-- <div class="col-lg-3 col-6">
 
                 <!-- small box -->
                 <div class="small-box bg-info">
@@ -25,9 +25,9 @@
                     </div>
                     <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
-            </div>
+            </div> --}}
 
-            <!-- ./col -->
+            {{-- <!-- ./col -->
             <div class="col-lg-3 col-6">
                 <!-- small box -->
                 <div class="small-box bg-success">
@@ -40,6 +40,22 @@
                         <i class="ion ion-stats-bars"></i>
                     </div>
                     <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div> --}}
+
+            <!-- ./col -->
+            <div class="col-lg-3 col-6">
+                <!-- small box -->
+                <div class="small-box bg-success">
+                    <div class="inner">
+                        <h3 class="text-white">{{$programkeahlian}}</h3>
+
+                        <p>Jumlah Program Keahlian</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-stats-bars"></i>
+                    </div>
+                    <a href="/programkeahlian" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
 
@@ -75,6 +91,22 @@
                 </div>
             </div>
 
+            <!-- ./col -->
+            <div class="col-lg-3 col-6">
+                <!-- small box -->
+                <div class="small-box bg-secondary">
+                    <div class="inner">
+                        <h3>{{$ruangan}}</h3>
+
+                        <p>Jumlah Ruangan</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-pie-graph"></i>
+                    </div>
+                    <a href="/ruangan" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+
         </div>
         <!-- /.row -->
         <!-- Main row -->
@@ -91,10 +123,26 @@
                     <div class="icon">
                         <i class="ion ion-bag"></i>
                     </div>
-                    <a href="/siswakelas" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    <a href="/siswa" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
-        
+
+            <div class="col-lg-3 col-6">
+
+                <!-- small box -->
+                <div class="small-box bg-primary">
+                    <div class="inner">
+                        <h3>{{$guru}}</h3>
+
+                        <p>Jumlah Guru</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-bag"></i>
+                    </div>
+                    <a href="/guru" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+
         </div>
 
     </div><!-- /.container-fluid -->

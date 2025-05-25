@@ -2,17 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+use App\Models\KelasModel;
 
 // panggil model jurusan
 use App\Models\JurusanModel;
-use App\Models\KelasModel;
-use App\Models\TahunAjaranModel;
+use Illuminate\Http\Request;
 use App\Models\SiswaKelasModel;
-use App\Models\BayarModel;
 use App\Models\BayarDetailModel;
-use Session;
+use App\Models\GuruModel;
+use App\Models\ProgramKeahlianModel;
+use App\Models\RuanganModel;
+use App\Models\SiswaModel;
+use App\Models\TahunAjaranModel;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 
 class HomeController extends Controller
 {
@@ -21,12 +24,15 @@ class HomeController extends Controller
         //ambil idtahun ajaran
         $idthnajaran = Session::get('idthnajaran');
         // dd($idthnajaran);
-            
+
         //ambil seluruh data tahun ajaran
         $tahunajaran = TahunAjaranModel::select("*")
         ->where('tbl_thnajaran.idthnajaran',Session::get('idthnajaran'))
         ->get();
         // dd($tahunajaran);
+
+        //hitung jumlah jurusan
+        $dataprogramkeahlian    = ProgramKeahlianModel::count('namaprogramkeahlian');
 
         //hitung jumlah jurusan
         $datajurusan    = JurusanModel::count('namajurusan');
@@ -37,34 +43,38 @@ class HomeController extends Controller
         // ->join('tbl_siswakelas','tbl_siswakelas.idkelas','=','tbl_kelas.idkelas')
         // ->where('tbl_siswakelas.idthnajaran',Session::get('idthnajaran'))
         // ->count();
-    
-        ////hitung jumlah transaksi berdasarkan tahun ajaran
-        $databayar      = BayarDetailModel::select("*")
-        ->join('tbl_bayar','tbl_bayar.idbayar','=','tbl_bayardetail.idbayar')
-        ->where('tbl_bayar.idthnajaran',Session::get('idthnajaran'))
-        ->count();
+
+        //hitung jumlah ruangan
+        $dataruangan    = RuanganModel::count('namaruangan');
+
+        //hitung jumlah guru
+        $dataguru       = GuruModel::count('namaguru');
 
         //MENGHITUNG JUMLAH SISWA PADA TAHUN AJARAN AKTIF
-        //  select count(*) as aggregate from `tbl_siswakelas` 
-        // inner join `tbl_kelasdetail` on `tbl_kelasdetail`.`idkelasdetail` = `tbl_siswakelas`.`idkelasdetail` 
+        //  select count(*) as aggregate from `tbl_siswakelas`
+        // inner join `tbl_kelasdetail` on `tbl_kelasdetail`.`idkelasdetail` = `tbl_siswakelas`.`idkelasdetail`
         // where `tbl_kelasdetail`.`idthnajaran` = 2
-       
-        $datasiswa      = SiswaKelasModel::select("*")
-        ->join('tbl_kelasdetail','tbl_kelasdetail.idkelasdetail','=','tbl_siswakelas.idkelasdetail')
-        
-        //id tahun ajaran harus diganti dengan varibale supaya bisa dinamis
-        ->where('tbl_kelasdetail.idthnajaran',$idthnajaran)
-        ->count();
+
+        $datasiswa      = SiswaModel::count('namasiswa');
+
+        // $datasiswa      = SiswaKelasModel::select("*")
+        // ->join('tbl_kelasdetail','tbl_kelasdetail.idkelasdetail','=','tbl_siswakelas.idkelasdetail')
+
+        // //id tahun ajaran harus diganti dengan varibale supaya bisa dinamis
+        // ->where('tbl_kelasdetail.idthnajaran',$idthnajaran)
+        // ->count();
 
 
         // dd($datajurusan);
 
         return view('admin/pages/v_home',
             [
+                'programkeahlian'=>$dataprogramkeahlian,
                 'jurusan'=>$datajurusan,
                 'kelas'=>$datakelas,
-                'bayar'=>$databayar,
-                'siswa'=>$datasiswa, 
+                'ruangan'=>$dataruangan,
+                'siswa'=>$datasiswa,
+                'guru'=>$dataguru,
                 'tahunajaran'=>$tahunajaran
             ]);
     }
