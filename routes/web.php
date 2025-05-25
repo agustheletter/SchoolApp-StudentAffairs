@@ -32,6 +32,7 @@ use Illuminate\Support\Facades\Route;
 //=========================AWAL ROUTE USER=========================
 Route::get('/', [UserController::class,'landingPage'])->name('landingpage');
 Route::get('/home', [UserController::class,'landingPage'])->name('landingpage');
+Route::get('/home', [UserController::class,'landingPage'])->name('landingpage');
 //=========================AWAL ROUTE USER=========================
 
 
